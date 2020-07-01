@@ -1,9 +1,12 @@
 # borgbackup-docker
 backup folders find in environment variables
+
 [![Build Status](https://ci.azlux.fr/api/badges/azlux/borgbackup-docker/status.svg)](https://ci.azlux.fr/azlux/borgbackup-docker)
 
 
 If MySQL values are givent, mysqldumpo will be also done and added to the backup.
+
+Docker Hub link : https://hub.docker.com/r/azlux/borgbackup
 
 ## Environnements variables:
 
