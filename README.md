@@ -11,14 +11,14 @@ Docker Hub link : https://hub.docker.com/r/azlux/borgbackup
 ## Environnements variables:
 
 ### Mandatory:
-- BORG_PASSPHRASE: ${BORG_PASSPHRASE}
-- FOLDERS_TO_BACKUP_PATH: /folder_to_backup
-- BACKUP_PATH: /backup
+- `BORG_PASSPHRASE` - borgbackup passphrase
+- `FOLDERS_TO_BACKUP_PATH` - folder path where you put the Volumes to backup
+- `BACKUP_PATH` - Backup Volume path
 
 ### Optionnal
-- MYSQL_USER: root
-- MYSQL_PASSWORD: ${MARIADB_MYSQL_ROOT_PASSWORD}
-- MYSQL_HOST: mariadb
+- `MYSQL_USER` - MySQL User (with all table read access)
+- `MYSQL_PASSWORD` - MySQL Password
+- `MYSQL_HOST` - IP or name of the MysQL Host
 
 
 ## Docker-compose example:
