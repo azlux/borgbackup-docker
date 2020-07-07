@@ -3,8 +3,9 @@ backup folders find in environment variables
 
 [![Build Status](https://ci.azlux.fr/api/badges/azlux/borgbackup-docker/status.svg)](https://ci.azlux.fr/azlux/borgbackup-docker)
 
+I've create this image to have simple to use backup with simple mount and included cron to avoid cron task on the host.
 
-If MySQL values are givent, mysqldumpo will be also done and added to the backup.
+Feel free to improve the code on the github with pull requests and questions.
 
 Docker Hub link : https://hub.docker.com/r/azlux/borgbackup
 
@@ -16,12 +17,13 @@ Docker Hub link : https://hub.docker.com/r/azlux/borgbackup
 - `BACKUP_PATH` - Backup Volume path
 
 ### Optionnal
+If MySQL values are givent, mysqldump will be executed and added to the backup.
 - `MYSQL_USER` - MySQL User (with all table read access)
 - `MYSQL_PASSWORD` - MySQL Password
 - `MYSQL_HOST` - IP or name of the MysQL Host
 
 
-## Docker-compose example:
+## Docker-compose v2 example:
 ```
 backup:
     image: azlux/borgbackup
