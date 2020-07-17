@@ -17,3 +17,4 @@ steps:
         - master
       event:
         - push
+        - cron
