@@ -12,7 +12,10 @@ steps:
       password:
         from_secret: docker_password
       tags: latest
-    when:
-      event:
-        - push
-        - cron
+
+trigger:
+  event:
+    - push
+    - cron
+  cron:
+    - os-update
