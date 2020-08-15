@@ -13,8 +13,6 @@ steps:
         from_secret: docker_password
       tags: latest
     when:
-      branch:
-        - master
       event:
         - push
         - cron
