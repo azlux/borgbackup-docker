@@ -34,6 +34,7 @@ steps:
       tags: latest
 
 trigger:
+  event:
     - cron
   cron:
     - os-update
