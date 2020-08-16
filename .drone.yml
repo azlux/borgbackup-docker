@@ -16,6 +16,24 @@ steps:
 trigger:
   event:
     - push
+
+---
+kind: pipeline
+type: docker
+name: cron
+
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      repo: azlux/borgbackup
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      tags: latest
+
+trigger:
     - cron
   cron:
     - os-update
