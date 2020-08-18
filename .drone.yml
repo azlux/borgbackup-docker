@@ -13,6 +13,9 @@ steps:
         from_secret: docker_password
       tags: latest
 
+node:
+  location: local
+
 trigger:
   event:
     - push
@@ -32,6 +35,9 @@ steps:
       password:
         from_secret: docker_password
       tags: latest
+
+node:
+  location: local
 
 trigger:
   event:
