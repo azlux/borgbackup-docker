@@ -21,7 +21,7 @@ If MySQL values are givent, mysqldump will be executed and added to the backup.
 - `MYSQL_USER` - MySQL User (with all table read access)
 - `MYSQL_PASSWORD` - MySQL Password
 - `MYSQL_HOST` - IP or name of the MysQL Host
-
+- `BACKUP_CRON`- Custom CRON time (`0 3 * * *` :every day at 3AM by default)
 
 ## Docker-compose v2 example:
 ```

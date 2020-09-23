@@ -14,4 +14,3 @@ RUN chmod +x /script_backup.sh && \
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD ["cron", "-f"]
-
