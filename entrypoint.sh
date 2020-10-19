@@ -27,7 +27,7 @@ if [ ! -f "$BACKUP_PATH"/config ]; then
 fi
 
 if [ -z "$BACKUP_CRON" ]; then
-    sed -i 's/0 3 * * */$BACKUP_CRON/' /etc/cron.d/backup
+    sed -i "s/0 3 \* \* \*/$BACKUP_CRON/" /etc/cron.d/backup
 fi
 
 # Save env variable for the cron
