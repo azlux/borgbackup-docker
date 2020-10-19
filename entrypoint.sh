@@ -26,7 +26,7 @@ if [ ! -f "$BACKUP_PATH"/config ]; then
     borgbackup init --encryption=repokey "$BACKUP_PATH"
 fi
 
-if [ -z "$BACKUP_CRON" ]; then
+if [ -n "$BACKUP_CRON" ]; then
     sed -i "s/0 3 \* \* \*/$BACKUP_CRON/" /etc/cron.d/backup
 fi
 
