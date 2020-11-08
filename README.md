@@ -1,9 +1,14 @@
 # borgbackup-docker
-backup folders find in environment variables
+Backup folders from environment variables with [BorgBackup tool](https://www.borgbackup.org/).
 
 [![Build Status](https://ci.azlux.fr/api/badges/azlux/borgbackup-docker/status.svg)](https://ci.azlux.fr/azlux/borgbackup-docker)
 
-I've create this image to have simple to use backup with simple mount and included cron to avoid cron task on the host.
+I've create this image to have :
+ - Simple to use backup
+ - Easy management with  mount and cron (to avoid cron task on the host).
+ - Easy setup with environnement variables
+ - MySQL backup included
+ - All backups encrypted
 
 Feel free to improve the code on the github with pull requests and questions.
 
@@ -39,7 +44,8 @@ backup:
         MYSQL_HOST: mariadb
     volumes:
         - /first/path/on/host:/folder_to_backup/data1
-        - /first/path/on/host:/folder_to_backup/data2
+        - /second/path/on/host:/folder_to_backup/data2
+        - ...
         - /backup/path/on/host:/backup
     tmpfs: /tmp
 ```
