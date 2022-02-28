@@ -25,7 +25,7 @@ if [ -z "$POSTGRES_HOST" ] || [ -z "$POSTGRES_USER" ] || [ -z "$POSTGRES_PASSWOR
     echo "POSTGRES not fully set, POSTGRES Backup disable"
 else
     if [ -n "$POSTGRES_VERSION" ] && [ "$POSTGRES_VERSION" -gt 9 ]; then
-        apt update && apt remove -y postgresql-client* && apt install -y postgresql-client-${POSTGRES_VERSION}
+        apt-get -qq update && apt-get -qq remove -y postgresql-client* && apt-get -qq install -y postgresql-client-${POSTGRES_VERSION}
     fi
     echo "POSTGRES configurated, POSTGRES backup enabled"
 fi
