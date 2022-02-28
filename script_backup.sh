@@ -8,6 +8,11 @@ if ! [ -z "$MYSQL_HOST" ] || [ -z "$MYSQL_USER" ] || [ -z "$MYSQL_PASSWORD" ]; t
     rm /tmp/all_databases.sql
 fi
 
+if ! [ -z "$POSTGRES_HOST" ] || [ -z "$POSTGRES_USER" ] || [ -z "$POSTGRES_PASSWORD" ]; then
+    PGPASSWORD="$POSTGRES_PASSWORD" pg_dumpall -U "$POSTGRES_USER" -h "$POSTGRES_HOST" > /tmp/all_databases.sql
+    borgbackup create --stats --compression lz4 "$BACKUP_PATH"::db_$(date +%Y-%m-%d_%H:%M) "/tmp/all_databases.sql"
+    rm /tmp/all_databases.sql
+fi
 
 for d in $FOLDERS_TO_BACKUP_PATH/*; do
     if [ -d "$d" ]; then

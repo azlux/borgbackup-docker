@@ -22,11 +22,16 @@ Docker Hub link : https://hub.docker.com/r/azlux/borgbackup
 - `BACKUP_PATH` - Backup Volume path
 
 ### Optionnal
-If MySQL values are givent, mysqldump will be executed and added to the backup.
+If MySQL or Postgres values are given, mysqldump and/or pg_dumpall will be executed and added to the backup.
 - `MYSQL_USER` - MySQL User (with all table read access)
 - `MYSQL_PASSWORD` - MySQL Password
 - `MYSQL_HOST` - IP or name of the MysQL Host
-- `BACKUP_CRON`- Custom CRON time (`0 3 * * *` :every day at 3AM by default)
+- `POSTGRES_USER` - POSTGRES User (with all table read access)
+- `POSTGRES_PASSWORD` - POSTGRES Password
+- `POSTGRES_HOST` - IP or name of the POSTGRES Host
+- `POSTGRES_VERSION` - Version of the postgres database if different from bullseye version
+- `BACKUP_CRON` - Custom CRON time (`0 3 * * *` :every day at 3AM by default)
+- `ONESHOT` - (true/false) Run the backup without cron (usefull if you have eternal scheduler) - False by default
 
 ## Docker-compose v2 example:
 ```

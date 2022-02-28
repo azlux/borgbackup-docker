@@ -16,11 +16,19 @@ if [ -z "$BACKUP_PATH" ]; then
 fi
 
 if [ -z "$MYSQL_HOST" ] || [ -z "$MYSQL_USER" ] || [ -z "$MYSQL_PASSWORD" ]; then
-        echo "MYSQL not fully set, MYSQL Backup disable"
+    echo "MYSQL not fully set, MYSQL Backup disable"
 else
-        echo "MYSQL configurated, MYSQL backup enabled"
+    echo "MYSQL configurated, MYSQL backup enabled"
 fi
 
+if [ -z "$POSTGRES_HOST" ] || [ -z "$POSTGRES_USER" ] || [ -z "$POSTGRES_PASSWORD" ]; then
+    echo "POSTGRES not fully set, POSTGRES Backup disable"
+else
+    if [ -n "$POSTGRES_VERSION" ] && [ "$POSTGRES_VERSION" -gt 9 ]; then
+        apt update && apt remove -y postgresql-client* && apt install -y postgresql-client-${POSTGRES_VERSION}
+    fi
+    echo "POSTGRES configurated, POSTGRES backup enabled"
+fi
 
 if [ ! -f "$BACKUP_PATH"/config ]; then
     borgbackup init --encryption=repokey "$BACKUP_PATH"
@@ -33,5 +41,10 @@ fi
 # Save env variable for the cron
 printenv | sed 's/^\(.*\)$/export \1/g' > /tmp/project_env.sh
 
-exec "$@"
+if [ -n "$ONESHOT" ] && [ "$ONESHOT" == "true" ]; then
+    /script_backup.sh > /proc/1/fd/1 2>/proc/1/fd/2
+else
+    exec "$@"
+fi
+  
 
