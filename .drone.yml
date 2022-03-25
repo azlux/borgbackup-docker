@@ -4,9 +4,11 @@ name: default
 
 steps:
   - name: docker
-    image: plugins/docker
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       repo: azlux/borgbackup
+      platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
       username:
         from_secret: docker_username
       password:
@@ -27,9 +29,11 @@ name: cron
 
 steps:
   - name: docker
-    image: plugins/docker
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       repo: azlux/borgbackup
+      platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
       username:
         from_secret: docker_username
       password:
