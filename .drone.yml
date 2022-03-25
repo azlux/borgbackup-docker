@@ -16,7 +16,7 @@ steps:
       tags: latest
 
 node:
-  location: local
+  location: external
 
 trigger:
   event:
@@ -41,7 +41,7 @@ steps:
       tags: latest
 
 node:
-  location: local
+  location: external
 
 trigger:
   event:
