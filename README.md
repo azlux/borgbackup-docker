@@ -5,7 +5,7 @@ Backup folders from environment variables with [BorgBackup tool](https://www.bor
 
 I've create this image to have :
  - Simple to use backup
- - Easy management with  mount and cron (to avoid cron task on the host).
+ - Easy management with  mount and cron, optional (to avoid cron task on the host).
  - Easy setup with environnement variables
  - MySQL backup included
  - All backups encrypted
