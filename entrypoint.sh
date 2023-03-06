@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ "$1" == "bash" ] || [ "$1" == "sh" ]; then
+    exec "${@}"
+fi
+
 if [ -z "$BORG_PASSPHRASE" ]; then
     echo "BORG_PASSPHRASE env variable not set. Exiting"
     exit 1
