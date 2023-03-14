@@ -28,7 +28,8 @@ fi
 if [ -z "$POSTGRES_HOST" ] || [ -z "$POSTGRES_USER" ] || [ -z "$POSTGRES_PASSWORD" ]; then
     echo "POSTGRES not fully set, POSTGRES Backup disable"
 else
-    if [ -n "$POSTGRES_VERSION" ] && [ "$POSTGRES_VERSION" -gt 9 ]; then
+    POSTGRES_CURRENT_VERSION=$(pg_dumpall --version | cut -f 3 -d ' ' | cut -f 1 -d '.')
+    if [ -n "$POSTGRES_VERSION" ] && [ "$POSTGRES_VERSION" -ne "$POSTGRES_CURRENT_VERSION" ]; then
         apt-get -qq update && apt-get -qq remove -y postgresql-client* && apt-get -qq install -y postgresql-client-${POSTGRES_VERSION}
     fi
     echo "POSTGRES configurated, POSTGRES backup enabled"
