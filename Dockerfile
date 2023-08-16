@@ -2,9 +2,9 @@ FROM debian:bookworm-slim
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt install -y -q wget gnupg2 && \
-    echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+    apt install -y -q curl ca-certificates gnupg2 lsb-release && \
+    echo "deb [signed-by=/usr/share/keyrings/apt.postgresql.org.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+    curl -s https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor --yes -o /usr/share/keyrings/apt.postgresql.org.gpg && \
     apt-get update && \
     apt-get install -y borgbackup cron mariadb-client bash procps postgresql-client && \
     rm -rf /var/lib/apt/lists/*
