@@ -32,8 +32,13 @@ If MySQL or Postgres values are given, mysqldump and/or pg_dumpall will be execu
 - `POSTGRES_PASSWORD` - POSTGRES Password
 - `POSTGRES_HOST` - IP or name of the POSTGRES Host
 - `POSTGRES_VERSION` - Version of the postgres database if different from bookworm version
+- `BORG_KEEP_WITHIN` - keep all archives within this time interval (default: `"14d"`)
+- `BORG_KEEP_WEEKLY` - number of weekly archives to keep (default: `8`)
+- `BORG_KEEP_MONTHLY` - number of monthly archives to keep (default: `6`)
 - `BACKUP_CRON` - Custom CRON time (`0 3 * * *` :every day at 3AM by default)
 - `ONESHOT` - (true/false) Run the backup without cron (usefull if you have eternal scheduler) - False by default
+
+See https://borgbackup.readthedocs.io/en/1.2-maint/usage/prune.html for the `BORG_KEEP_XXX`variables
 
 ## Docker-compose v2 example:
 ```

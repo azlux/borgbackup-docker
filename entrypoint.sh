@@ -75,12 +75,12 @@ if [ -n "$BACKUP_CRON" ]; then
     sed -i "s/0 3 \* \* \*/$BACKUP_CRON/" /etc/cron.d/backup
 fi
 
-# Save env variable for the cron
-printenv | sed 's/^\(.*\)$/export \1/g' > /tmp/project_env.sh
-
 if [ -n "$ONESHOT" ] && [ "$ONESHOT" == "true" ]; then
     exec /script_backup.sh
 else
+    # Save env variable for the cron
+    printenv | sed 's/^\(.*\)$/export \1/g' > /tmp/project_env.sh
+    chmod 700 /tmp/project_env.sh
     exec "$@"
 fi
 

@@ -16,5 +16,10 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /script_backup.sh && \
     chmod +x /entrypoint.sh
 
+# Add default KEEP values if unset
+ENV BORG_KEEP_WITHIN="14d"
+ENV BORG_KEEP_WEEKLY=8
+ENV BORG_KEEP_MONTHLY=6
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD ["cron", "-f"]
