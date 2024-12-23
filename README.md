@@ -61,6 +61,20 @@ backup:
         - /backup/path/on/host:/backup
     tmpfs: /tmp
 ```
+## How to restore
+I didn't implement automatic restore, tools are already included.
+
+The Docker image allow you to start a bash, so you can run with:
+```bash
+docker run -it -e BORG_PASSPHRASE="YOUR_BORG_PASSPHRASE" -v "/dir/of/your/backup:/backup" -e "BACKUP_PATH=/backup"  azlux/borgbackup bash
+```
+
+Then you will have a bash, with the `borg` command available with all the posibilities from the CLI : [See the official doc](https://borgbackup.readthedocs.io/en/stable/index.html)
+Usefull command to restore:
+- `borg list /backup` [doc](https://borgbackup.readthedocs.io/en/stable/usage/list.html)
+- `borg extract --progress /backup::name-of-the-backup-with-date` [doc](https://borgbackup.readthedocs.io/en/stable/usage/extract.html)
+  - a folder named with `FOLDERS_TO_BACKUP_PATH` will be created
+
 ## Why Debian
 Many people ask me for alpine image. If you want one, don't take my image.
 
