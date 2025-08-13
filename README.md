@@ -1,6 +1,8 @@
 # borgbackup-docker
 Backup folders from environment variables with [BorgBackup tool](https://www.borgbackup.org/).
 
+The source of this project is https://git.azlux.fr/azlux/borgbackup-docker, **PR are accepted on the source only**.
+
 Build every week for the base image update, and, of course, at every commit : [![Build Status](https://ci.azlux.fr/api/badges/azlux/borgbackup-docker/status.svg)](https://ci.azlux.fr/azlux/borgbackup-docker)
 
 I've create this image to have :
