@@ -47,7 +47,7 @@ else
         apt-get -qq install -y postgresql-client-"${POSTGRES_VERSION}"
         retVal=$?
         if [ $retVal -ne 0 ]; then
-            echo "[ERR] An issue appear during the postgresql-client-${POSTGRES_VERSION} install"
+            echo "[ERR] An issue appear during the postgresql-client-\"${POSTGRES_VERSION}\" install"
             echo "[ERR] maybe this version isn't available for $(lsb_release -cs)"
             echo "[ERR] some 32bits CPU aren't supported by postgres repository (like armhf/armv7), so only the Debian stable version is available"
             echo "[ERR] Exiting !"
