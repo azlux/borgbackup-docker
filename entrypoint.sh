@@ -44,7 +44,7 @@ else
         echo "[INFO] Removing the default postgres client version $POSTGRES_CURRENT_VERSION provided by Debian $(lsb_release -cs)"
         apt-get -qq update && apt-get -qq remove -y postgresql-client*
         echo "[INFO] Installing the requested postgres client version $POSTGRES_VERSION"
-        apt-get -qq install -y postgresql-client-${POSTGRES_VERSION}
+        apt-get -qq install -y postgresql-client-"${POSTGRES_VERSION}"
         retVal=$?
         if [ $retVal -ne 0 ]; then
             echo "[ERR] An issue appear during the postgresql-client-${POSTGRES_VERSION} install"
