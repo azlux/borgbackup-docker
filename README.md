@@ -39,6 +39,7 @@ If MySQL or Postgres values are given, mysqldump and/or pg_dumpall will be execu
 - `BORG_KEEP_MONTHLY` - number of monthly archives to keep (default: `6`)
 - `BACKUP_CRON` - Custom CRON time (`0 3 * * *` :every day at 3AM by default)
 - `ONESHOT` - (true/false) Run the backup without cron (usefull if you have eternal scheduler) - False by default
+- `KUMA_PUSH_URL` - if you use it, you can add a push monitor by adding your push url (without the params after the `?`) - Empty by default
 
 See https://borgbackup.readthedocs.io/en/1.2-maint/usage/prune.html for the `BORG_KEEP_XXX`variables
 

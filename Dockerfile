@@ -1,5 +1,5 @@
 FROM debian:trixie-slim
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt install -y -q curl ca-certificates gnupg2 lsb-release && \
