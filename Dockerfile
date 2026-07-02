@@ -14,7 +14,8 @@ COPY script_backup.sh /script_backup.sh
 COPY entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /script_backup.sh && \
-    chmod +x /entrypoint.sh
+    chmod +x /entrypoint.sh && \
+    chmod 0644 /etc/cron.d/backup
 
 # Add default KEEP values if unset
 ENV BORG_KEEP_WITHIN="14d"
